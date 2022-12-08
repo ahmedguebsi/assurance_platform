@@ -91,15 +91,6 @@ const Sidebar = () => {
 
           {!isCollapsed && (
             <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={`../../assets/user.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
               <Box textAlign="center">
                 <Typography
                   variant="h2"
@@ -107,10 +98,9 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+
                 </Typography>
               </Box>
             </Box>
@@ -118,27 +108,10 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
           <MenuItem routerLink={<Link to="/dashboard" />}> Dashboard</MenuItem>
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
-            <MenuItem routerLink={<Link to="/team" />}> Manage subscription</MenuItem>
-            <MenuItem routerLink={<Link to="/contacts" />}> Contacts information</MenuItem>
-            <MenuItem routerLink={<Link to="/invoices" />}> Invoices Balances</MenuItem>
             
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            <MenuItem routerLink={<Link to="/form" />}> Profile form</MenuItem>
+            <MenuItem routerLink={<Link to="/users" />}> all</MenuItem>
+            
+            <MenuItem routerLink={<Link to="/register" />}> Profile form</MenuItem>
             
           </Box>
         </Menu>

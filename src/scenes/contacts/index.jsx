@@ -4,10 +4,19 @@ import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
-
+import { useRef, useState, useEffect } from "react";
+import useRefreshToken from "../../hooks/useRefreshToken";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate, useLocation } from "react-router-dom";
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // const [getuserdata, setUserdata] = useState([]);
+  const [users, setUsers] = useState();
+  const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const refresh = useRefreshToken();
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -17,13 +26,6 @@ const Contacts = () => {
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
     },
     {
       field: "phone",
@@ -36,18 +38,18 @@ const Contacts = () => {
       flex: 1,
     },
     {
-      field: "address",
-      headerName: "Address",
+      field: "x_coordinate",
+      headerName: "X coordinate",
       flex: 1,
     },
     {
-      field: "city",
-      headerName: "City",
+      field: "y_coordinate",
+      headerName: "Y coordinate",
       flex: 1,
     },
     {
-      field: "zipCode",
-      headerName: "Zip Code",
+      field: "payment status",
+      headerName: "payment status",
       flex: 1,
     },
   ];
@@ -95,8 +97,11 @@ const Contacts = () => {
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
+
       </Box>
+      <button onClick={()=>refresh()}>Refresh</button>
     </Box>
+    
   );
 };
 
